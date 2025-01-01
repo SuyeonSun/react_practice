@@ -1,0 +1,24 @@
+.product-wrapper {
+  display: flex;
+  flex-wrap: wrap; /* 한 줄에 두 개씩 배치되도록 줄 바꿈 허용 */
+  justify-content: space-between; /* 아이템 간의 간격 균등 */
+  gap: 10px; /* 아이템 간의 간격 */
+  width: 80%; /* 부모의 너비를 사용 */
+}
+
+.filter {
+  display: flex;
+  gap: 10px;
+}
+
+.filter input {
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.filter select {
+  border: 1px solid;
+  border-radius: 5px;
+  width: 60px;
+}

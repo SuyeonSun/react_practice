@@ -1,0 +1,13 @@
+.app {
+  width: 800px;
+  margin: 0px auto;
+  display: flex;
+}
+
+.product-list {
+  flex: 3; /* 60% */
+}
+
+.like-list {
+  flex: 2; /* 40% */
+}
