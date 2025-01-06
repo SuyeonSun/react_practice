@@ -13,6 +13,7 @@ const ProductList = ({ products, onUpdate }) => {
     setSelect(e.target.value);
   };
 
+  // select, search 검색 함수 분리
   const getFilteredProduct = () => {
     let filtered =
       search === ""
@@ -25,6 +26,7 @@ const ProductList = ({ products, onUpdate }) => {
     return filtered;
   };
 
+  // filter state
   const filteredProducts = getFilteredProduct();
 
   return (
