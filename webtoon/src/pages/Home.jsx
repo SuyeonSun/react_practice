@@ -6,10 +6,12 @@ const Home = () => {
   const [webtoonList, setWebtoonList] = useState([]);
   const [day, setDay] = useState("");
   const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+  const [selectedBtn, setSelectedBtn] = useState(0);
 
   useEffect(() => {
     const todayDay = new Date().getDay();
     setDay(days[todayDay]);
+    setSelectedBtn(todayDay);
   }, []);
 
   useEffect(() => {
@@ -33,12 +35,15 @@ const Home = () => {
 
   const handleButtonClick = (e) => {
     setDay(days[e.target.value]);
+    setSelectedBtn(e.target.value);
   };
 
   return (
-    <div>
-      <h1>Webtoon List</h1>
-      <Search onHandleButtonClick={handleButtonClick} />
+    <div className="home-container">
+      <Search
+        onHandleButtonClick={handleButtonClick}
+        selectedBtn={selectedBtn}
+      />
       <List webtoonList={webtoonList} />
     </div>
   );

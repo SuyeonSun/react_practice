@@ -1,0 +1,37 @@
+.header-container {
+  display: flex;
+  gap: 10px;
+  padding: 10px 20px; // 위, 아래 // 왼, 오
+  background-color: white;
+
+  button {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+
+    &:nth-child(1) {
+      font: {
+        weight: bold;
+        size: large;
+      }
+      color: black;
+    }
+
+    &:nth-child(2) {
+      font: {
+        weight: bold;
+        size: large;
+      }
+      color: black;
+    }
+
+    &:nth-child(3),
+    &:nth-child(4) {
+      font: {
+        weight: normal;
+        size: medium;
+      }
+      color: gray;
+    }
+  }
+}

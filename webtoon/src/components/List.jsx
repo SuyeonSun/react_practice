@@ -1,18 +1,23 @@
+import "./List.scss";
 import { Link } from "react-router-dom";
 
 const List = ({ webtoonList }) => {
   return (
-    <div>
-      <ul>
-        {webtoonList.map((webtoon) => (
-          <li key={webtoon.id}>
-            {/* TODO: detail 페이지 새로고침 해도 데이터 초기화 안되는 이유? */}
-            <Link to={`/${webtoon.id}`} state={{ webtoon }}>
-              {webtoon.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
+    <div className="list-container">
+      {webtoonList.map((webtoon) => (
+        <Link to={`/${webtoon.id}`} state={{ webtoon }}>
+          <img src={webtoon.thumbnail} />
+          <div className="title-text">{webtoon.title}</div>
+          <div className="author-text">
+            {webtoon.authors.map((author, index) => (
+              <span key={index}>
+                {author} {index !== webtoon.authors.length - 1 ? "/" : null}
+              </span>
+            ))}
+          </div>
+          <div className="score-text">9.91</div>
+        </Link>
+      ))}
     </div>
   );
 };

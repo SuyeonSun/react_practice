@@ -1,0 +1,25 @@
+.search-container {
+  display: flex;
+  justify-content: flex-start;
+  border: {
+    top: 1px solid #eaeaea;
+    bottom: 1px solid #eaeaea;
+    left: none;
+    right: none;
+  }
+  margin: 0px 10px;
+
+  button {
+    padding: 12px 20px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    font-weight: bolder;
+
+    &.selected-btn {
+      background-color: #2db400;
+      color: white;
+      border-color: #2db400;
+    }
+  }
+}
