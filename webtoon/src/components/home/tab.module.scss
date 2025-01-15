@@ -1,4 +1,4 @@
-.search-container {
+.tab-container {
   display: flex;
   justify-content: flex-start;
   border: {
@@ -16,7 +16,7 @@
     cursor: pointer;
     font-weight: bolder;
 
-    &.selected-btn {
+    &.tab-btn {
       background-color: #2db400;
       color: white;
       border-color: #2db400;

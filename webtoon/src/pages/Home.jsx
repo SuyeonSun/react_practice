@@ -1,23 +1,17 @@
 import { useEffect, useState } from "react";
-import Search from "../components/Search";
-import List from "../components/List";
+import Tab from "../components/home/Tab";
+import List from "../components/home/List";
+
+const DAYS = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]; // 상수는 컴포넌트 밖에 위치
 
 const Home = () => {
   const [webtoonList, setWebtoonList] = useState([]);
-  const [day, setDay] = useState("");
-  const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-  const [selectedBtn, setSelectedBtn] = useState(0);
+  const [day, setDay] = useState(() => new Date().getDay());
 
   useEffect(() => {
-    const todayDay = new Date().getDay();
-    setDay(days[todayDay]);
-    setSelectedBtn(todayDay);
-  }, []);
-
-  useEffect(() => {
-    if (!day) return;
+    const dayString = DAYS[day];
     fetch(
-      `https://korea-webtoon-api-cc7dda2f0d77.herokuapp.com/webtoons?provider=NAVER&page=1&perPage=30&sort=ASC&updateDay=${day}`
+      `https://korea-webtoon-api-cc7dda2f0d77.herokuapp.com/webtoons?provider=NAVER&page=1&perPage=30&sort=ASC&updateDay=${dayString}`
     )
       .then((response) => {
         if (!response.ok) {
@@ -34,16 +28,13 @@ const Home = () => {
   }, [day]);
 
   const handleButtonClick = (e) => {
-    setDay(days[e.target.value]);
-    setSelectedBtn(e.target.value);
+    const selectedDay = Number(e.target.value); // 문자열을 숫자로 변환
+    setDay(selectedDay);
   };
 
   return (
     <div className="home-container">
-      <Search
-        onHandleButtonClick={handleButtonClick}
-        selectedBtn={selectedBtn}
-      />
+      <Tab onHandleButtonClick={handleButtonClick} selectedBtn={day} />
       <List webtoonList={webtoonList} />
     </div>
   );
