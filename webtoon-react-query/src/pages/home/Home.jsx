@@ -1,4 +1,7 @@
 import useWebtoons from "../../hooks/home/useWebtoons";
+import { Button } from "@theshop/ui";
+// import { Text } from "@theshop/ui";
+import List from "../../components/home/List";
 
 const Home = () => {
   const { data, isLoading, isError, refetch } = useWebtoons({ page: 1 });
@@ -13,14 +16,21 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Home Page</h1>
+      {/* <Text size="title3" bold={true}>
+        Webtoon List Home Page
+      </Text> */}
+      <List webtoonList={data?.webtoons} />
       <div>
-        {data?.webtoons.map(({ id, title }) => (
-          <li key={id}>{title}</li>
-        ))}
-      </div>
-      <div>
-        <button onClick={refetch}>refetch</button>
+        <Button
+          color="adaptiveOpacity900"
+          backgroundColor="adaptiveGrey200"
+          outlineColor="adaptiveGrey800"
+          size="md"
+          full={false}
+          onClick={refetch}
+        >
+          refetch
+        </Button>
       </div>
     </div>
   );
