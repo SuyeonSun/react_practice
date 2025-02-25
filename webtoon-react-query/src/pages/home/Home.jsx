@@ -1,7 +1,7 @@
 import useWebtoons from "../../hooks/home/useWebtoons";
 
 const Home = () => {
-  const { data, isLoading, isError } = useWebtoons({ page: 1 });
+  const { data, isLoading, isError, refetch } = useWebtoons({ page: 1 });
 
   if (isLoading && data == null) {
     return <h1>로딩중...</h1>;
@@ -15,9 +15,12 @@ const Home = () => {
     <div>
       <h1>Home Page</h1>
       <div>
-        {data.webtoons.map(({ id, title }) => (
+        {data?.webtoons.map(({ id, title }) => (
           <li key={id}>{title}</li>
         ))}
+      </div>
+      <div>
+        <button onClick={refetch}>refetch</button>
       </div>
     </div>
   );
